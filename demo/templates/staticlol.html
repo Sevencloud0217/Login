@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lol打野排行榜</title>
+    <link rel="stylesheet" href="/static/css/1.css">
+</head>
+<body>
+{#    {{ params }}#}
+{#<a href="./index.html">回到首页</a>#}
+<a href="/index">回到首页</a>
+<ol>
+{% for one in params %}
+    <li>
+    <h2>
+        <a href="{{ one.url }}">
+{#            <img src="/static/img/{{ one.img }}" alt="联盟排行榜">#}
+            <img src="{% static '/img' %}{{ one.img }}">
+        </a>
+    </h2>
+        <h2>{{ one.name }}</h2>
+    </li>
+{% endfor %}
+</ol>
+</body>
+</html>

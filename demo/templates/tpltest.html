@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+<h2>姓名：{{ name |capfirst}}</h2>
+<h2>年龄：{{ age |add:10 }}</h2>
+<h2>爱好：{{ hobby }}</h2>
+<h2>分数：{{ score }}</h2>
+<h2>数学{{ score.shuxue }}</h2>
+<h2>{{ say.say }}</h2>
+
+{% if age >= 18 and age < 40 %}
+<p>青壮年</p>
+    {% elif age >= 40 and age < 60%}
+    <p>中年</p>
+    {% elif age >= 60 %}
+    <p>老年</p>
+{% endif  %}
+
+{{ myjs | safe }}
+<img src="{{ img }}">
+
+
+<ol>
+{% for one in hobby reversed%}
+    <li>{{ one }}</li>
+{% endfor %}
+</ol>
+{% for key,value in score.items %}
+    <p>{{ key }}:{{ value }}</p>
+{% endfor %}
+
+
+{% for one in hobby reversed%}
+    {% if forloop.first %}
+        <p style="color: #ff2d12">{{ forloop.counter }}.{{ one }}</p>
+    {% elif forloop.last %}
+        <p style="color: #00ff00">{{ forloop.counter }}.{{ one }}</p>
+    {% else %}
+        <p>{{ forloop.counter }}.{{ one }}</p>
+    {% endif %}
+{% endfor %}
+
+#过滤器
+
+
+
+
+</body>
+</html>

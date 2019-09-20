@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<div>
+    <h3>普通样式</h3>
+    {{ register_form }}
+    <hr>
+</div>
+
+
+<div>
+    <h3>标签样式</h3>
+    {{ register_form.as_p }}
+    <hr>
+</div>
+
+<div>
+    <h3>序列样式</h3>
+    {{ register_form.as_ul }}
+    <hr>
+</div>
+
+<div>
+    <h3>table样式</h3>
+    {{ register_form.as_table }}
+    <hr>
+</div>
+
+
+
+</body>
+</html>

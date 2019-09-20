@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>post</title>
+    <script src="/static/js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<form action="" method="Post">
+    {% csrf_token %}
+     姓名：<input type="text" id="username" name="username"><br>
+    密码：<input type="text" id="password" name="password"><br>
+{#    <input type="submit" value="提交">#}
+{#    <button id="check_value">提交</button>#}
+    <input type="button" value="提交" id="check_value">
+    <p id = "text"></p>
+</form>
+<script>
+    $("#username").blur(
+        function () {
+            username = $('#username').val()
+            url = '/checkusername/?name='+username
+            $.ajax(
+                {
+                    url:url,
+                    type:'get',
+                    data:"",
+                    success:function (data) {
+                        $("#text").text(data.content);
+                    },
+                    error:function (error) {
+                        
+                    }
+                }
+            )
+        }
+    )
+
+
+
+    $('#check_value').click(
+        function () {
+            username = $("#username").val();
+            passwoed = $("#password").val();
+            send_data = {
+              'username':username,
+              'password':passwoed,
+              "csrfmiddlewaretoken":"{{ csrf_token }}"
+            };
+            console.log(send_data);
+            url="/ajax_post_data/";
+            $.ajax(
+                {
+                    url:url,
+                    type:'post',
+                    data:send_data,
+                    success:function (data) {
+                        console.log(data);
+                    },
+                    error:function (error) {
+                        console.log(error);
+                    }
+
+                }
+            )
+
+        }
+    )
+
+
+
+</script>
+</body>
+</html>
